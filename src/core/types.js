@@ -1,0 +1,7 @@
+export const DEL_INSULT = 'HOME@DEL_INSULT';
+
+export const LOAD_INSULT = 'HOME@LOAD_INSULT';
+
+export const SAVE_INSULT = 'HOME@SAVE_INSULT';
+
+export const SEARCH_INSULT = 'HOME@SEARCH_INSULT';
