@@ -1,18 +1,18 @@
-import Example from '../container';
+import Home from '../container';
 import React from 'react';
 import { Record } from 'immutable';
 import configureStore from 'redux-mock-store';
-import { exampleReducer } from 'core/Example/reducer';
+import { homeReducer } from 'core/Example/reducer';
 import saga from 'redux-saga';
 import { shallow } from 'enzyme';
 
-const title = 'Welcome to Valhalla - React/Redux boilerplate';
+const insultCollection = ['insult 0'];
 
 const defaultState = new Record({
-    title
+    insultCollection
 });
 
-describe('Example container', () => {
+describe('Home container', () => {
     
     const middlewares = [saga];
     const mockStore = configureStore(middlewares);
@@ -22,23 +22,31 @@ describe('Example container', () => {
     let wrapper;
 
     beforeEach(() => {
-        newState = exampleReducer(new defaultState(), {});
-        store = mockStore({ example: newState });
-        wrapper = shallow(<Example store={ store } />);
+        newState = homeReducer(new defaultState(), {});
+        store = mockStore({ home: newState });
+        wrapper = shallow(<Home store={ store } />);
     });
 
     describe('mapDispatchToProps', () => {
-        
-        it('should have exampleActionCreator action dispatcher', () => {
-            expect(wrapper.prop('exampleActionCreator')).toBeDefined();
+
+        it('should have loadInsult action dispatcher', () => {
+            expect(wrapper.prop('exampleActionCreator')).toBeInstanceOf(Function);
+        });
+
+        it('should have deleteInsult action dispatcher', () => {
+            expect(wrapper.prop('exampleActionCreator')).toBeInstanceOf(Function);
+        });
+
+        it('should have searchInsults action dispatcher', () => {
+            expect(wrapper.prop('exampleActionCreator')).toBeInstanceOf(Function);
         });
 
     });
 
     describe('mapStateToProps', () => {
-        
-        it('exampleSelector should set title as prop', () => {
-            expect(wrapper.prop('title')).toEqual(title);
+
+        it('insultSelector should set array of insults', () => {
+            expect(wrapper.prop('insultCollection')).toEqual(insultCollection);
         });
 
     });
