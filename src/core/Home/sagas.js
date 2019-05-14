@@ -7,7 +7,6 @@ export function* getPhrases () {
         const data = yield call(phraseGenerator);
         yield put(savePhrase(data));
     } catch (e) {
-        console.log(e);
         yield put(newError(e.message));
     }
 }
