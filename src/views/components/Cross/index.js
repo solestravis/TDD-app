@@ -1,12 +1,13 @@
 import React from 'react';
 import { StyledCross } from './styled';
-import { func } from 'prop-types';
+import { func, number, oneOfType, string } from 'prop-types';
 
-const Cross = ({ onClick }) => (
-    <StyledCross onClick={ onClick }>&#10005;</StyledCross>
+const Cross = ({ id, onClick }) => (
+    <StyledCross id={ id } onClick={ onClick }>&#10005;</StyledCross>
 );
 
 Cross.propTypes = {
+    id: oneOfType([number, string]).isRequired,
     onClick: func
 };
 

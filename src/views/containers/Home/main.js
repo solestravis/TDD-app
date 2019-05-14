@@ -25,9 +25,10 @@ class Home extends Component {
         loadPhrase();
     }
 
-    _handleCrossClick = () => {
+    _handleCrossClick = event => {
         const { deletePhrase } = this.props;
-        deletePhrase();
+        const phraseID = event.target.id;
+        deletePhrase(phraseID);
     }
 
     _handleInputChange = () => {
@@ -41,7 +42,7 @@ class Home extends Component {
             <Layout>
                 <Container>
                     <Button onClick={ this._handleButtonClick }>Get new phrase!</Button>
-                    <PhraseList phrases={ phraseCollection } />
+                    <PhraseList phrases={ phraseCollection } onCrossClick={ this._handleCrossClick } />
                     <Input phrases={ phraseCollection } onChange={ this._handleInputChange } />
                 </Container>
             </Layout>

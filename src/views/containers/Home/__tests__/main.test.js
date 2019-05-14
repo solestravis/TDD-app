@@ -42,19 +42,14 @@ describe('<Home />', () => {
             expect(button).toHaveLength(1);
         });
 
-        it('always renders List', () => {
-            const list = wrapper.find('List');
+        it('always renders PhraseList', () => {
+            const list = wrapper.find('PhraseList');
             expect(list).toHaveLength(1);
         });
 
         it('always renders Input', () => {
             const input = wrapper.find('Input');
             expect(input).toHaveLength(1);
-        });
-
-        it('always renders Cross', () => {
-            const cross = wrapper.find('Cross');
-            expect(cross).toHaveLength(1);
         });
 
     });
@@ -70,11 +65,13 @@ describe('<Home />', () => {
         });
 
         it('calls _handleCrossClick and dispatches deletePhrase', () => {
+            const mockEvent = { target: { id: 1 } };
             const mockHandleClick = jest.spyOn(wrapper.instance(), '_handleCrossClick');
             wrapper.instance().forceUpdate();
-            wrapper.instance()._handleCrossClick();
+            wrapper.instance()._handleCrossClick(mockEvent);
             expect(mockHandleClick).toHaveBeenCalled();
             expect(deletePhrase).toHaveBeenCalledTimes(1);
+            expect(deletePhrase).toHaveBeenCalledWith(mockEvent.target.id);
         });
 
         it('calls _handleInputChange and dispatches searchPhrases', () => {
