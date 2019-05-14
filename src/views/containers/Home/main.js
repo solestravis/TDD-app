@@ -14,7 +14,7 @@ class Home extends Component {
         deletePhrase: func,
         loadPhrase: func,
         phraseCollection: array,
-        searchPhrases: func
+        searchPhrase: func
     }
 
     constructor (props) {
@@ -34,8 +34,8 @@ class Home extends Component {
     }
 
     _handleInputChange = () => {
-        const { searchPhrases } = this.props;
-        searchPhrases();
+        const { searchPhrase } = this.props;
+        searchPhrase();
     }
 
     render () {

@@ -9,8 +9,6 @@ import { shallow } from 'enzyme';
 import { DEL_PHRASE, LOAD_PHRASE, SEARCH_PHRASE } from 'core/types';
 import { deletePhrase, loadPhrase, searchPhrase } from 'core/Home/action';
 
-const phraseCollection = ['phrase 0'];
-
 jest.mock('core/Home/selector', () => ({
     phraseSelector: jest.fn()
     // Selector: jest.fn(),
@@ -42,6 +40,8 @@ deletePhrase.mockImplementation(() => ACTION_DEL_PHR);
 loadPhrase.mockImplementation(() => ACTION_LOAD_PHR);
 searchPhrase.mockImplementation(() => ACTION_SEARCH_PHR);
 
+const phraseCollection = ['phrase 0'];
+
 const defaultState = new Record({
     phraseCollection
 });
@@ -53,12 +53,18 @@ describe('Home container', () => {
 
     let newState;
     let store;
+    let storeMock;
     let wrapper;
 
     beforeEach(() => {
         newState = homeReducer(new defaultState(), {});
-        store = mockStore({ home: newState });
-        wrapper = shallow(<Home store={ store } />);
+        store = { home: newState };
+        storeMock = mockStore(store);
+        wrapper = shallow(<Home store={ storeMock } />);
+    });
+
+    afterEach(() => {
+        phraseSelector.mockClear();
     });
 
     describe('mapDispatchToProps', () => {

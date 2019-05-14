@@ -9,14 +9,14 @@ describe('<Home />', () => {
 
     const deletePhrase = jest.fn();
     const loadPhrase = jest.fn();
-    const searchPhrases = jest.fn();
+    const searchPhrase = jest.fn();
 
     const props = {
         children: '',
         deletePhrase,
-        phrases: [],
         loadPhrase,
-        searchPhrases
+        phraseCollection: ['phrase 0'],
+        searchPhrase
     };
 
     beforeEach(() => {
@@ -82,7 +82,7 @@ describe('<Home />', () => {
             wrapper.instance().forceUpdate();
             wrapper.instance()._handleInputChange();
             expect(mockHandleChange).toHaveBeenCalled();
-            expect(searchPhrases).toHaveBeenCalledTimes(1);
+            expect(searchPhrase).toHaveBeenCalledTimes(1);
         });
 
     });

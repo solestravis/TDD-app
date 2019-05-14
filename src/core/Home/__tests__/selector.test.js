@@ -19,7 +19,7 @@ describe('Phrases selector', () => {
 
     it('should return only phrase in the array', () => {
         const phrase = 'random phrase';
-        const payload = { phrase };
+        const payload = [phrase];
         const newState = homeReducer(defaultState(), savePhrase(payload));
         const store = { home: newState };
         const result = phraseSelector(store);
