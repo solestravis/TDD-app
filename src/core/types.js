@@ -1,7 +1,9 @@
-export const DEL_INSULT = 'HOME@DEL_INSULT';
+export const DEL_PHRASE = 'HOME@DEL_PHRASE';
 
-export const LOAD_INSULT = 'HOME@LOAD_INSULT';
+export const LOAD_PHRASE = 'HOME@LOAD_PHRASE';
 
-export const SAVE_INSULT = 'HOME@SAVE_INSULT';
+export const NEW_ERR = 'HOME@NEW_ERR';
 
-export const SEARCH_INSULT = 'HOME@SEARCH_INSULT';
+export const SAVE_PHRASE = 'HOME@SAVE_PHRASE';
+
+export const SEARCH_PHRASE = 'HOME@SEARCH_PHRASE';

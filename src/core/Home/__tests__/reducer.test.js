@@ -1,8 +1,8 @@
 import { homeReducer } from '../reducer';
-import { saveInsult } from '../action';
+import { savePhrase } from '../action';
 
 const defaultState = () => ({
-    insultCollection: []
+    phraseCollection: []
 });
 
 describe('Example reducer', () => {
@@ -13,10 +13,10 @@ describe('Example reducer', () => {
         expect(result).toEqual(record);
     });
 
-    it('should save insult', () => {
-        const payload = 'random insult';
-        const result = homeReducer(defaultState(), saveInsult(payload));
-        const record = { insultCollection: [payload] };
+    it('should save phrase', () => {
+        const payload = 'random phrase';
+        const result = homeReducer(defaultState(), savePhrase(payload));
+        const record = { phraseCollection: [payload] };
         expect(result).toEqual(record);
     });
 

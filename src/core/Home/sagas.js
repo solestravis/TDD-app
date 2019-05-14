@@ -1,11 +1,11 @@
-import { insultGenerator } from './services';
+import { phraseGenerator } from './services';
 import { call, put } from 'redux-saga/effects';
-import { newError, saveInsult } from './action';
+import { newError, savePhrase } from './action';
 
-export function* getInsults () {
+export function* getPhrases () {
     try {
-        const data = yield call(insultGenerator);
-        yield put(saveInsult(data));
+        const data = yield call(phraseGenerator);
+        yield put(savePhrase(data));
     } catch (e) {
         console.log(e);
         yield put(newError(e.message));

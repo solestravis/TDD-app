@@ -1,7 +1,10 @@
 import axios from 'axios';
 
-export const insultGenerator = () => (
-    axios.get('https://evilinsult.com/generate_insult.php?lang=en&type=json')
+// Const url = 'https://breaking-bad-quotes.herokuapp.com/v1/quotes';
+const url = 'https://baconipsum.com/api/?type=all-meat&sentences=1';
+
+export const phraseGenerator = () => (
+    axios.get(url)
         .then(function ({ data }) {
             return data;
         })

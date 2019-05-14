@@ -2,15 +2,15 @@ import Home from './main';
 
 import { connect } from 'react-redux';
 
-import { exampleActionCreator } from 'core/Home/action';
-import { exampleSelector } from 'core/Home/selector';
+import { phraseSelector } from 'core/Home/selector';
+import { deletePhrase, loadPhrase, searchPhrase } from 'core/Home/action';
 
 function mapStateToProps (state) {
     return {
-        title: exampleSelector(state)
+        phraseCollection: phraseSelector(state)
     };
 }
 
-const mapDispatchToProps = { exampleActionCreator };
+const mapDispatchToProps = { deletePhrase, loadPhrase, searchPhrase };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

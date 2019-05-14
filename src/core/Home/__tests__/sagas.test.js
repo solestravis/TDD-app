@@ -1,23 +1,23 @@
-import { getInsults } from '../sagas';
-import { insultGenerator } from '../services';
+import { getPhrases } from '../sagas';
+import { phraseGenerator } from '../services';
 import { call, put } from 'redux-saga/effects';
-import { loadInsult, newError, saveInsult } from '../action';
+import { loadPhrase, newError, savePhrase } from '../action';
 
 describe('Sagas', () => {
 
     it('should set Pokemons if name is valid', () => {
-        const insult = 'random insult';
-        const gen = getInsults(loadInsult);
-        expect(gen.next().value).toEqual(call(insultGenerator));
-        expect(gen.next(insult).value).toEqual(put(saveInsult(insult)));
+        const phrase = 'random phrase';
+        const gen = getPhrases(loadPhrase);
+        expect(gen.next().value).toEqual(call(phraseGenerator));
+        expect(gen.next(phrase).value).toEqual(put(savePhrase(phrase)));
         expect(gen.next().done).toBeTruthy();
     });
 
     it('should handle error if API call fails', () => {
         const error = { message: '' };
-        const gen = getInsults(loadInsult);
+        const gen = getPhrases(loadPhrase);
 
-        expect(gen.next().value).toEqual(call(insultGenerator));
+        expect(gen.next().value).toEqual(call(phraseGenerator));
         expect(gen.throw(error).value).toEqual(put(newError(error.message)));
         expect(gen.next().done).toBeTruthy();
     });

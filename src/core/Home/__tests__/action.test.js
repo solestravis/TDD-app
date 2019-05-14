@@ -1,43 +1,43 @@
 import {
-    DEL_INSULT,
-    LOAD_INSULT,
-    SAVE_INSULT,
-    SEARCH_INSULT
+    DEL_PHRASE,
+    LOAD_PHRASE,
+    SAVE_PHRASE,
+    SEARCH_PHRASE
 } from '../../types';
-import { deleteInsult, loadInsult, saveInsult, searchInsult } from '../action';
+import { deletePhrase, loadPhrase, savePhrase, searchPhrase } from '../action';
 
 describe('Home actions', () => {
 
     const payload = '';
 
-    it('loadInsult', () => {
-        const result = loadInsult();
+    it('loadPhrase', () => {
+        const result = loadPhrase();
         expect(result).toEqual({
-            type: LOAD_INSULT
+            type: LOAD_PHRASE
         });
     });
 
-    it('saveInsult', () => {
-        const result = saveInsult(payload);
+    it('savePhrase', () => {
+        const result = savePhrase(payload);
         expect(result).toEqual({
             payload,
-            type: SAVE_INSULT
+            type: SAVE_PHRASE
         });
     });
 
-    it('searchInsult', () => {
-        const result = searchInsult(payload);
+    it('searchPhrase', () => {
+        const result = searchPhrase(payload);
         expect(result).toEqual({
             payload,
-            type: SEARCH_INSULT
+            type: SEARCH_PHRASE
         });
     });
 
-    it('deleteInsult', () => {
-        const result = deleteInsult(payload);
+    it('deletePhrase', () => {
+        const result = deletePhrase(payload);
         expect(result).toEqual({
             payload,
-            type: DEL_INSULT
+            type: DEL_PHRASE
         });
     });
     

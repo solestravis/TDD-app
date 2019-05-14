@@ -7,16 +7,16 @@ describe('<Home />', () => {
 
     let wrapper;
 
-    const deleteInsult = jest.fn();
-    const loadInsult = jest.fn();
-    const searchInsults = jest.fn();
+    const deletePhrase = jest.fn();
+    const loadPhrase = jest.fn();
+    const searchPhrases = jest.fn();
 
     const props = {
         children: '',
-        deleteInsult,
-        insults: [],
-        loadInsult,
-        searchInsults
+        deletePhrase,
+        phrases: [],
+        loadPhrase,
+        searchPhrases
     };
 
     beforeEach(() => {
@@ -61,28 +61,28 @@ describe('<Home />', () => {
 
     describe('methods', () => {
 
-        it('calls _handleButtonClick and dispatches loadInsult', () => {
+        it('calls _handleButtonClick and dispatches loadPhrase', () => {
             const mockHandleClick = jest.spyOn(wrapper.instance(), '_handleButtonClick');
             wrapper.instance().forceUpdate();
             wrapper.instance()._handleButtonClick();
             expect(mockHandleClick).toHaveBeenCalled();
-            expect(loadInsult).toHaveBeenCalledTimes(1);
+            expect(loadPhrase).toHaveBeenCalledTimes(1);
         });
 
-        it('calls _handleCrossClick and dispatches deleteInsult', () => {
+        it('calls _handleCrossClick and dispatches deletePhrase', () => {
             const mockHandleClick = jest.spyOn(wrapper.instance(), '_handleCrossClick');
             wrapper.instance().forceUpdate();
             wrapper.instance()._handleCrossClick();
             expect(mockHandleClick).toHaveBeenCalled();
-            expect(deleteInsult).toHaveBeenCalledTimes(1);
+            expect(deletePhrase).toHaveBeenCalledTimes(1);
         });
 
-        it('calls _handleInputChange and dispatches searchInsults', () => {
+        it('calls _handleInputChange and dispatches searchPhrases', () => {
             const mockHandleChange = jest.spyOn(wrapper.instance(), '_handleInputChange');
             wrapper.instance().forceUpdate();
             wrapper.instance()._handleInputChange();
             expect(mockHandleChange).toHaveBeenCalled();
-            expect(searchInsults).toHaveBeenCalledTimes(1);
+            expect(searchPhrases).toHaveBeenCalledTimes(1);
         });
 
     });

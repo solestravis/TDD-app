@@ -1,35 +1,35 @@
-import { DEL_INSULT, LOAD_INSULT, SAVE_INSULT, SEARCH_INSULT } from '../types';
+import { DEL_PHRASE, LOAD_PHRASE, NEW_ERR, SAVE_PHRASE, SEARCH_PHRASE } from '../types';
 
-export function deleteInsult (payload) {
+export function deletePhrase (payload) {
     return {
         payload,
-        type: DEL_INSULT
+        type: DEL_PHRASE
     };
 }
 
-export function loadInsult () {
+export function loadPhrase () {
     return {
-        type: LOAD_INSULT
+        type: LOAD_PHRASE
     };
 }
 
 export function newError (payload) {
     return {
         payload,
-        type: LOAD_INSULT
+        type: NEW_ERR
     };
 }
 
-export function saveInsult (payload) {
+export function savePhrase (payload) {
     return {
         payload,
-        type: SAVE_INSULT
+        type: SAVE_PHRASE
     };
 }
 
-export function searchInsult (payload) {
+export function searchPhrase (payload) {
     return {
         payload,
-        type: SEARCH_INSULT
+        type: SEARCH_PHRASE
     };
 }

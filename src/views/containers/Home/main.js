@@ -5,16 +5,16 @@ import Input from 'views/components/Input';
 import { Layout } from 'views/components/Layout';
 import List from 'views/components/List';
 import ListItem from 'views/components/ListItem';
-import { func } from 'prop-types';
-
 import React, { Component } from 'react';
+import { array, func } from 'prop-types';
 
 class Home extends Component {
 
     static propTypes = {
-        deleteInsult: func,
-        loadInsult: func,
-        searchInsults: func
+        deletePhrase: func,
+        loadPhrase: func,
+        phraseCollection: array,
+        searchPhrases: func
     }
 
     constructor (props) {
@@ -24,29 +24,34 @@ class Home extends Component {
     }
 
     _handleButtonClick = () => {
-        const { loadInsult } = this.props;
-        loadInsult();
+        const { loadPhrase } = this.props;
+        loadPhrase();
     }
 
     _handleCrossClick = () => {
-        const { deleteInsult } = this.props;
-        deleteInsult();
+        const { deletePhrase } = this.props;
+        deletePhrase();
     }
 
     _handleInputChange = () => {
-        const { searchInsults } = this.props;
-        searchInsults();
+        const { searchPhrases } = this.props;
+        searchPhrases();
     }
 
     render () {
+        const { phraseCollection } = this.props;
         return (
             <Layout>
                 <Container>
-                    <Button onClick={ this._handleButtonClick }>Get new insult!</Button>
+                    <Button onClick={ this._handleButtonClick }>Get new phrase!</Button>
                     <List>
-                        <ListItem id="2">
-                            Algo <Cross onClick={ this._handleCrossClick } />
-                        </ListItem>
+                        {
+                            phraseCollection.map((phrase, index) => (
+                                <ListItem id={ index } key={ index } >
+                                    { phrase } <Cross onClick={ this._handleCrossClick } />
+                                </ListItem>
+                            ))
+                        }
                     </List>
                     <Input onChange={ this._handleInputChange } />
                 </Container>

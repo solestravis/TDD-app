@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyledListItem } from './styled';
-import { any, string } from 'prop-types';
+import { any, number } from 'prop-types';
 
 const ListItem = ({ children, id, ...props }) => (
     <StyledListItem id={ id } { ...props }>{ children }</StyledListItem>
@@ -8,7 +8,7 @@ const ListItem = ({ children, id, ...props }) => (
 
 ListItem.propTypes = {
     children: any,
-    id: string.isRequired
+    id: number.isRequired
 };
 
 ListItem.displayName = 'ListItem';

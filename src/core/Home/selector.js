@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
 
-const example = store => store.home.title;
+const phrases = store => store.home.phraseCollection;
 
-export const exampleSelector = createSelector(
-    example,
-    example => example
+export const phraseSelector = createSelector(
+    phrases,
+    phrases => phrases.map(phrase => (phrase[0]))
 );

@@ -1,15 +1,15 @@
-import { SAVE_INSULT } from 'core/types';
+import { SAVE_PHRASE } from 'core/types';
 
 const defaultState = () => ({
-    insultCollection: []
+    phraseCollection: []
 });
 
 export function homeReducer (state = defaultState(), { type, payload }) {
     switch (type) {
-    case SAVE_INSULT:
+    case SAVE_PHRASE:
         return {
             ...state,
-            insultCollection: [...state.insultCollection, payload]
+            phraseCollection: [...state.phraseCollection, payload]
         };
     default:
         return state;

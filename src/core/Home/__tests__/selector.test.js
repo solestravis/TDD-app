@@ -1,19 +1,29 @@
-import { exampleReducer } from '../reducer';
-import { exampleSelector } from '../selector';
+import { homeReducer } from '../reducer';
+import { phraseSelector } from '../selector';
+import { savePhrase } from '../action';
 
-const title = 'Welcome to Valhalla - React/Redux boilerplate';
+const phraseCollection = [];
 
 const defaultState = () => ({
-    title
+    phraseCollection
 });
 
-describe('Messages selector', () => {
-    const newState = exampleReducer(defaultState(), {});
-    const store = { example: newState };
-    const result = exampleSelector(store);
+describe('Phrases selector', () => {
 
-    it('should return messages', () => {
-        expect(result).toEqual(title);
+    it('should return same empty array', () => {
+        const newState = homeReducer(defaultState(), {});
+        const store = { home: newState };
+        const result = phraseSelector(store);
+        expect(result).toEqual(phraseCollection);
+    });
+
+    it('should return only phrase in the array', () => {
+        const phrase = 'random phrase';
+        const payload = { phrase };
+        const newState = homeReducer(defaultState(), savePhrase(payload));
+        const store = { home: newState };
+        const result = phraseSelector(store);
+        expect(result).toEqual([phrase]);
     });
 
 });
