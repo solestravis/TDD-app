@@ -1,10 +1,8 @@
 import Button from 'views/components/Button';
 import { Container } from 'views/components/Container';
-import Cross from 'views/components/Cross';
-import Input from 'views/components/Input';
+import Input from './components/Input';
 import { Layout } from 'views/components/Layout';
-import List from 'views/components/List';
-import ListItem from 'views/components/ListItem';
+import PhraseList from './components/PhraseList';
 import React, { Component } from 'react';
 import { array, func } from 'prop-types';
 
@@ -19,7 +17,6 @@ class Home extends Component {
 
     constructor (props) {
         super(props);
-
         this.state = {};
     }
 
@@ -44,16 +41,8 @@ class Home extends Component {
             <Layout>
                 <Container>
                     <Button onClick={ this._handleButtonClick }>Get new phrase!</Button>
-                    <List>
-                        {
-                            phraseCollection.map((phrase, index) => (
-                                <ListItem id={ index } key={ index } >
-                                    { phrase } <Cross onClick={ this._handleCrossClick } />
-                                </ListItem>
-                            ))
-                        }
-                    </List>
-                    <Input onChange={ this._handleInputChange } />
+                    <PhraseList phrases={ phraseCollection } />
+                    <Input phrases={ phraseCollection } onChange={ this._handleInputChange } />
                 </Container>
             </Layout>
         );

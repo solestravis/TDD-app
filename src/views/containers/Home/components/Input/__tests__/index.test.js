@@ -9,7 +9,7 @@ describe('<Input />', () => {
 
     beforeEach(() => {
         wrapper = shallow(
-            <Input onChange={ mockOnchange } />
+            <Input phrases={ [] } onChange={ mockOnchange } />
         );
     });
 
@@ -28,6 +28,14 @@ describe('<Input />', () => {
             wrapper.simulate('change');
             expect(wrapper.prop('onChange')).toHaveBeenCalledTimes(1);
         });
+
+        // it('should return null if phrases.length is 0', () => {
+        //     console.log(wrapper.debug());
+        // });
+
+        // it('should return StyledInput if phrases.length is other than 0', () => {
+        //     console.log(wrapper.debug());
+        // });
 
     });
     

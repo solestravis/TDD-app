@@ -1,8 +1,9 @@
 import React from 'react';
+import { StyledCross } from './styled';
 import { func } from 'prop-types';
 
 const Cross = ({ onClick }) => (
-    <span onClick={ onClick }>&#10005;</span>
+    <StyledCross onClick={ onClick }>&#10005;</StyledCross>
 );
 
 Cross.propTypes = {
