@@ -48,6 +48,7 @@
       "!**/styled.js",
       "!**/containers/*/index.js",
       "!**/core/**/services.js",
+      "!**/containers/*/components/*/index.js",
       "!**/core/*.js"
     ]
   }

@@ -1,3 +1,4 @@
+import Cross from 'views/components/Cross';
 import List from 'views/components/List';
 import ListItem from 'views/components/ListItem';
 
@@ -8,9 +9,17 @@ const PhraseList = ({ input, onCrossClick, phrases, results }) => (
     <List>
         {
             input.length ?
-                <ListItem phrases={ results } onCrossClick={ onCrossClick } />
+                results.map((phrase, index) => (
+                    <ListItem key={ phrase }>
+                        { phrase }<Cross id={ index } onClick={ onCrossClick } />
+                    </ListItem>
+                ))
                 :
-                <ListItem phrases={ phrases } onCrossClick={ onCrossClick } />
+                phrases.map((phrase, index) => (
+                    <ListItem key={ phrase }>
+                        { phrase }<Cross id={ index } onClick={ onCrossClick } />
+                    </ListItem>
+                ))
         }
     </List>
 );

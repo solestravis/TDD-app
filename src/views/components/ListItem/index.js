@@ -1,19 +1,15 @@
-import Cross from 'views/components/Cross';
 import React from 'react';
-import { StyledItem } from './styled';
-import { array, func } from 'prop-types';
+import { StyledListItem } from './styled';
+import { any } from 'prop-types';
 
-export const Item = ({ phrases, onCrossClick }) => (
-    phrases.map((phrase, index) => (
-        <StyledItem key={ index }>
-            { phrase }<Cross id={ index } onClick={ onCrossClick } />
-        </StyledItem>
-    ))
+export const ListItem = ({ children }) => (
+    <StyledListItem>{ children }</StyledListItem>
 );
 
-Item.propTypes = {
-    onCrossClick: func,
-    phrases: array
+ListItem.propTypes = {
+    children: any
 };
 
-Item.displayName = 'Item';
+ListItem.displayName = 'ListItem';
+
+export default ListItem;
