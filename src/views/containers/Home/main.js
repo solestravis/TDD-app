@@ -31,9 +31,9 @@ class Home extends Component {
         deletePhrase(phraseID);
     }
 
-    _handleInputChange = () => {
+    _handleInputChange = ({ target: { value } }) => {
         const { searchPhrase } = this.props;
-        searchPhrase();
+        searchPhrase(value);
     }
 
     render () {

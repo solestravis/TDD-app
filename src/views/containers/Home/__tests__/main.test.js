@@ -75,11 +75,13 @@ describe('<Home />', () => {
         });
 
         it('calls _handleInputChange and dispatches searchPhrases', () => {
+            const mockEvent = { target: { value: 1 } };
             const mockHandleChange = jest.spyOn(wrapper.instance(), '_handleInputChange');
             wrapper.instance().forceUpdate();
-            wrapper.instance()._handleInputChange();
+            wrapper.instance()._handleInputChange(mockEvent);
             expect(mockHandleChange).toHaveBeenCalled();
             expect(searchPhrase).toHaveBeenCalledTimes(1);
+            expect(searchPhrase).toHaveBeenCalledWith(mockEvent.target.value);
         });
 
     });
