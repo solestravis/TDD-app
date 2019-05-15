@@ -12,12 +12,15 @@ class Home extends Component {
         deletePhrase: func,
         loadPhrase: func,
         phraseCollection: array,
+        searchCollection: array,
         searchPhrase: func
     }
 
     constructor (props) {
         super(props);
-        this.state = {};
+        this.state = {
+            inputValue: ''
+        };
     }
 
     _handleButtonClick = () => {
@@ -33,16 +36,18 @@ class Home extends Component {
 
     _handleInputChange = ({ target: { value } }) => {
         const { searchPhrase } = this.props;
+        this.setState({ ...this.state, inputValue: value });
         searchPhrase(value);
     }
 
     render () {
-        const { phraseCollection } = this.props;
+        const { phraseCollection, searchCollection } = this.props;
+        const { inputValue } = this.state;
         return (
             <Layout>
                 <Container>
                     <Button onClick={ this._handleButtonClick }>Get new phrase!</Button>
-                    <PhraseList phrases={ phraseCollection } onCrossClick={ this._handleCrossClick } />
+                    <PhraseList input={ inputValue } phrases={ phraseCollection } results={ searchCollection } onCrossClick={ this._handleCrossClick } />
                     <Input phrases={ phraseCollection } onChange={ this._handleInputChange } />
                 </Container>
             </Layout>

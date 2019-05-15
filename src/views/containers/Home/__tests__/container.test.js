@@ -3,15 +3,15 @@ import React from 'react';
 import { Record } from 'immutable';
 import configureStore from 'redux-mock-store';
 import { homeReducer } from 'core/Home/reducer';
-import { phraseSelector } from 'core/Home/selector';
 import saga from 'redux-saga';
 import { shallow } from 'enzyme';
 import { DEL_PHRASE, LOAD_PHRASE, SEARCH_PHRASE } from 'core/types';
 import { deletePhrase, loadPhrase, searchPhrase } from 'core/Home/action';
+import { phraseSelector, searchSelector } from 'core/Home/selector';
 
 jest.mock('core/Home/selector', () => ({
-    phraseSelector: jest.fn()
-    // Selector: jest.fn(),
+    phraseSelector: jest.fn(),
+    searchSelector: jest.fn()
 }));
 
 jest.mock('core/Home/action', () => ({
@@ -41,9 +41,11 @@ loadPhrase.mockImplementation(() => ACTION_LOAD_PHR);
 searchPhrase.mockImplementation(() => ACTION_SEARCH_PHR);
 
 const phraseCollection = ['phrase 0'];
+const searchCollection = [];
 
 const defaultState = new Record({
-    phraseCollection
+    phraseCollection,
+    searchCollection
 });
 
 describe('Home container', () => {
@@ -65,6 +67,7 @@ describe('Home container', () => {
 
     afterEach(() => {
         phraseSelector.mockClear();
+        searchSelector.mockClear();
     });
 
     describe('mapDispatchToProps', () => {
@@ -91,6 +94,11 @@ describe('Home container', () => {
         it('phraseSelector should set phrase array as prop', () => {
             expect(phraseSelector).toHaveBeenCalledTimes(1);
             expect(phraseSelector).toHaveBeenCalledWith(store);
+        });
+        
+        it('searchSelector should set phrase array as prop', () => {
+            expect(searchSelector).toHaveBeenCalledTimes(1);
+            expect(searchSelector).toHaveBeenCalledWith(store);
         });
 
     });

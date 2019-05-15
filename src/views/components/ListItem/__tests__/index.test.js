@@ -1,32 +1,36 @@
-import ListItem from '../index';
+import { Item } from '../index';
 
 import React from 'react';
 import { shallow } from 'enzyme';
 
 describe('<ListItem />', () => {
     let wrapper;
-    const children = 'children';
-    const id = '2';
+    const onCrossClick = jest.fn();
+    const props = {
+        onCrossClick,
+        phrases: []
+    };
 
     beforeEach(() => {
         wrapper = shallow(
-            <ListItem id={ id }>{ children }</ListItem>
+            <Item { ...props } />
         );
+        console.log(wrapper.debug());
     });
 
     describe('render', () => {
 
-        it('always renders StyledListItem', () => {
+        it('renders nothing when there are no items in the array', () => {
+            expect(wrapper).toBeUndefined();
+        });
+
+        it('renders StyledListItem when there are items in array', () => {
+            wrapper.setProps({
+                ...props,
+                phrases: ['me']
+            });
             const styledListItem = wrapper.find('StyledListItem');
             expect(styledListItem).toHaveLength(1);
-        });
-
-        it('should have children', () => {
-            expect(wrapper.prop('children')).toBe(children);
-        });
-
-        it('should take an id', () => {
-            expect(wrapper.prop('id')).toBe(id);
         });
 
     });

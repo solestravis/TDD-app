@@ -1,25 +1,25 @@
-import Cross from 'views/components/Cross';
 import List from 'views/components/List';
 import ListItem from 'views/components/ListItem';
 
 import React from 'react';
-import { array, func } from 'prop-types';
+import { array, func, string } from 'prop-types';
 
-const PhraseList = ({ onCrossClick, phrases }) => (
+const PhraseList = ({ input, onCrossClick, phrases, results }) => (
     <List>
         {
-            phrases.map((phrase, index) => (
-                <ListItem key={ phrase } >
-                    { phrase } <Cross id={ index } onClick={ onCrossClick } />
-                </ListItem>
-            ))
+            input.length ?
+                <ListItem phrases={ results } onCrossClick={ onCrossClick } />
+                :
+                <ListItem phrases={ phrases } onCrossClick={ onCrossClick } />
         }
     </List>
 );
 
 PhraseList.propTypes = {
+    input: string,
     onCrossClick: func,
-    phrases: array
+    phrases: array,
+    results: array
 };
 
 PhraseList.displayName = 'PhraseList';
