@@ -17,13 +17,12 @@ describe('Phrases selector', () => {
         expect(result).toEqual(phraseCollection);
     });
 
-    it('should return only phrase in the array', () => {
-        const phrase = 'random phrase';
-        const payload = [phrase];
+    it('should return same array', () => {
+        const payload = 'random phrase';
         const newState = homeReducer(defaultState(), savePhrase(payload));
         const store = { home: newState };
         const result = phraseSelector(store);
-        expect(result).toEqual([phrase]);
+        expect(result).toEqual(newState.phraseCollection);
     });
 
 });

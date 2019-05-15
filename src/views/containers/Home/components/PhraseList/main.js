@@ -9,7 +9,7 @@ const PhraseList = ({ onCrossClick, phrases }) => (
     <List>
         {
             phrases.map((phrase, index) => (
-                <ListItem key={ index } >
+                <ListItem key={ phrase } >
                     { phrase } <Cross id={ index } onClick={ onCrossClick } />
                 </ListItem>
             ))
